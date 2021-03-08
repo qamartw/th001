@@ -210,39 +210,39 @@ namespace BlazorApp1.Shared
             sb.Append(ten.item1);
             sb.Append("</td></tr>");
 
-            sb.Append("<tr><th>2</th><td>说明<br>Description</td><td>"); // [TODO]
+            sb.Append("<tr><th>2</th><td>Description</td><td>"); // [TODO]
             sb.Append(ten.item2);
             sb.Append("</td></tr>");
 
-            sb.Append("<tr><th>3</th><td>角色<br>Roles</td><td>");// [TODO]
+            sb.Append("<tr><th>3</th><td>Roles</td><td>");// [TODO]
             sb.Append(ten.item3);
             sb.Append("</td></tr>");
 
-            sb.Append("<tr><th>4</th><td>前置条件<br>Precondition</td><td>");// [TODO]
+            sb.Append("<tr><th>4</th><td>Precondition</td><td>");// [TODO]
             sb.Append(ten.item4);
             sb.Append("</td></tr>");
 
-            sb.Append("<tr><th>5</th><td>输入<br>Input</td><td>");// [TODO]
+            sb.Append("<tr><th>5</th><td>Input</td><td>");// [TODO]
             sb.Append(ten.item5);
             sb.Append("</td></tr>");
 
-            sb.Append("<tr><th>6</th><td>输出<br>Output</td><td>");// [TODO]
+            sb.Append("<tr><th>6</th><td>Output</td><td>");// [TODO]
             sb.Append(ten.item6);
             sb.Append("</td></tr>");
 
-            sb.Append("<tr><th>7</th><td>异常处里<br>Abnormal handle</td><td>");// [TODO]
+            sb.Append("<tr><th>7</th><td>Abnormal handle</td><td>");// [TODO]
             sb.Append(ten.item7);
             sb.Append("</td></tr>");
 
-            sb.Append("<tr><th>8</th><td>操作步骤<br>Steps</td><td>");// [TODO]
+            sb.Append("<tr><th>8</th><td>Steps</td><td>");// [TODO]
             sb.Append(ten.item8);
             sb.Append("</td></tr>");
 
-            sb.Append("<tr><th>9</th><td>后置条件<br>Post condition</td><td>");// [TODO]
+            sb.Append("<tr><th>9</th><td>Post condition</td><td>");// [TODO]
             sb.Append(ten.item9);
             sb.Append("</td></tr>");
 
-            sb.Append("<tr><th>10</th><td>备注<br>Remark</td><td>");// [TODO]
+            sb.Append("<tr><th>10</th><td>Remark</td><td>");// [TODO]
             sb.Append(ten.item10);
             sb.Append("</td></tr>");
 
