@@ -1,0 +1,23 @@
+{
+  "intItem1": 1015,
+  "intItem2": 1019,
+  "intItem3": 1023,
+  "intItem4": 1027,
+  "intItem5": 1031,
+  "intItem6": 1035,
+  "intItem7": 1039,
+  "intItem8": 1045,
+  "intItem9": 1055,
+  "intItem10": 1059,
+  "id": "M070",
+  "item1": "AS/RS transfer command data maintenance",
+  "item2": "Cancel, force completion, or change the priority order of the AS/RS transfer command",
+  "item3": "Warehouse operator",
+  "item4": "The action of the AS/RS transfer command has not been started<br>",
+  "item5": "Query conditions for command information",
+  "item6": "Update command data",
+  "item7": "If there is no qualified command data for inbound and outbound storage, the system will prompt for no command information. The user can execute Data Inquire-> Q070 AS / RS Transfer Command Query to query the command data and status; or select the specified command number",
+  "item8": "Enter query conditions and select Query command data",
+  "item9": "Not applicable",
+  "item10": "The user can execute Data Inquire-> Q070 AS / RS Transfer Command Query to query the command data to confirm that the modified data is correct, or confirm in repeated operation step 1.<br>"
+}
