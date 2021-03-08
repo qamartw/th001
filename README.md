@@ -19,9 +19,9 @@
 
 3. 預計用時: 4 小時
 
-### 主要指示:
+建議:
 - 一次性, 可以手工一個檔案一個檔案處理
-- 也可以自行段小程式, 按照 货物已入库<br>Article have been stored<br>, 以<br>區分
+- 也可以自行段小程式, 按照 货物已入库&lt;br>Article have been stored&lt;br>, 以&lt;br>區分
 
 
 ## Th004 以上述範例完成所有中文文檔,加上頁面上加一個TAB [Doc Zh] 
