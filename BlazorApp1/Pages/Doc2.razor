@@ -1,0 +1,205 @@
+﻿
+@layout CleanLayout
+@page "/doc2/{id?}"
+@attribute [Authorize]
+@using Microsoft.AspNetCore.Hosting;
+@inject IWebHostEnvironment WebEnvironment;
+
+@using BlazorApp1.Data
+@inject PageService pageService;
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">Navbar</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Link</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Dropdown
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="#">Action</a>
+                        <a class="dropdown-item" href="#">Another action</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#">Something else here</a>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link disabled" href="#">Disabled</a>
+                </li>
+            </ul>
+            <form class="form-inline my-2 my-lg-0">
+                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            </form>
+        </div>
+    </nav>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main_nav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="main_nav">
+
+            <ul class="navbar-nav">
+                <li class="nav-item"> <a class="nav-link" href="#"> First level 1 </a> </li>
+                <li class="nav-item"> <a class="nav-link" href="#"> First level 2 </a></li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">  First level 3  </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="#"> Second level 1 </a></li>
+                        <li>
+                            <a class="dropdown-item" href="#"> Second level 2 &raquo </a>
+                            <ul class="submenu dropdown-menu">
+                                <li><a class="dropdown-item" href=""> Third level 1</a></li>
+                                <li><a class="dropdown-item" href=""> Third level 2</a></li>
+                                <li>
+                                    <a class="dropdown-item" href=""> Third level 3 &raquo </a>
+                                    <ul class="submenu dropdown-menu">
+                                        <li><a class="dropdown-item" href=""> Fourth level 1</a></li>
+                                        <li><a class="dropdown-item" href=""> Fourth level 2</a></li>
+                                    </ul>
+                                </li>
+                                <li><a class="dropdown-item" href=""> Second level  4</a></li>
+                                <li><a class="dropdown-item" href=""> Second level  5</a></li>
+                            </ul>
+                        </li>
+                        <li><a class="dropdown-item" href="#"> Dropdown item 3 </a></li>
+                        <li><a class="dropdown-item" href="#"> Dropdown item 4 </a></li>
+                    </ul>
+                </li>
+                <li class="nav-item"> <a class="nav-link" href="#"> First level 1 </a> </li>
+                <li class="nav-item"> <a class="nav-link" href="#"> First level 2 </a></li>
+            </ul>
+
+        </div> <!-- navbar-collapse.// -->
+    </nav>
+    <ul id="myUL">
+        <li>
+            <span class="caret">Beverages</span>
+            <ul class="nested">
+                <li>Water</li>
+                <li>Coffee</li>
+                <li>
+                    <span class="caret">Tea</span>
+                    <ul class="nested">
+                        <li>Black Tea</li>
+                        <li>White Tea</li>
+                        <li>
+                            <span class="caret">Green Tea</span>
+                            <ul class="nested">
+                                <li>Sencha</li>
+                                <li>Gyokuro</li>
+                                <li>Matcha</li>
+                                <li>Pi Lo Chun</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+    </ul>
+
+@if (@StrId == null)
+{
+
+
+    <h3> <a href="/"> <span class="oi oi-home" aria-hidden="true"></span></a> -  <span class="oi oi-list" aria-hidden="true"></span> Doc List 文檔列表 </h3>
+    <ul>
+        @if (@PageList != null)
+        {
+            @foreach (var item in @PageList)
+            {
+                <li><a href="/doc/@item.Id">  @item.Name</a></li>
+            }
+
+        }
+
+        @*<li><a href="/Q000/Q080">Q080 Inventory Data Query 库存数据查询</a></li>
+        <li><a href="/Q000/Q090">Q090 Location Usage Status Query 库位使用状态查询</a></li>
+        <li><a href="/Q000/Q100">Q100 Location Status Query 库位状态查询</a></li>
+        <li><a href="/Q000/Q110">Q110 Bin to Bin Transfer Query 转储记录数据查询</a></li>
+        <li><a href="/Q000/Q120">Q120 Posting Change Transfer Query库存属性移转查询</a></li>
+
+
+        <li>Q010 Article Basic Data Query 库存产品基本数据查询</li>
+        <li>Q020 GTIN Basic Data Query 产品替代包装单位基本数据查询</li>
+        <li>Q030 Storage Unit Type Basic Data Query 储存载具基本数据查询</li>
+        <li>Q040 Transfer Requirement Data Query 移转需求数据查询</li>
+        <li>Q050 Delivery Order Data Query 交货单数据查询</li>
+        <li>Q060 Physical Inventory Count Data Query 盘点单数据查询</li>
+        <li>Q070 AS/RS Transfer Command Data Query 自动仓搬运命令查询</li>
+        <li><a href="Q080">Q080 Inventory Data Query 库存数据查询</a></li>
+        <li><a href="Q090">Q090 Location Usage Status Query 库位使用状态查询</a></li>
+        <li><a href="Q100">Q100 Location Status Query 库位状态查询</a></li>
+        <li><a href="Q110">Q110 Bin to Bin Transfer Query 转储记录数据查询</a></li>
+        <li><a href="Q120">Q120 Posting Change Transfer Query库存属性移转查询</a></li>*@
+    </ul>
+}
+else
+{
+
+    <HomeHead Title=@PageTitle></HomeHead>
+    @strHtml
+}
+
+
+
+@code {
+    [Parameter]
+    public string Id { get; set; }
+
+    public string PageTitle { get; set; }
+
+
+    public List<IdName> PageList;
+
+    public string NO_PARAMETER = "LIST";
+    public string StrId { get; set; }
+
+    MarkupString strHtml;
+    protected override void OnInitialized()
+    {
+
+
+
+    }
+    protected override void OnAfterRender(bool firstRender)
+    {
+        var x = Id;
+
+        if (Id != null)
+        {
+            StrId = Id;
+        }
+        else
+        {
+            StrId = null;
+        }
+        StateHasChanged();
+        var wwwroot = WebEnvironment.WebRootPath;
+
+        //            strHtml = (MarkupString)Util.GetHtmlStringExtAll(wwwroot, "Q080");
+        strHtml = (MarkupString)Util.GetHtmlStringExtAll(wwwroot, StrId);
+
+        //        PageTitle = Util.GetPageTitle(wwwroot, StrId);
+        PageTitle = pageService.GetPageTitle(StrId);
+        PageList = pageService.GetPageList();
+
+
+
+
+    }
+
+
+
+}

@@ -1,0 +1,136 @@
+﻿@page "/requirement"
+<h3>項目需求</h3>
+
+
+
+
+<h4>2021-03-05 recap wechat call with PF</h4>
+<ol>
+    <li>在5/31前完成交付</li>
+    <li>
+        本項目, 按目前理解,交付給盟立TW,
+        我們不做實際現場部署,
+        雖然主要在盟立TW完成驗收,
+        仍要負責協助現場可能遇到問題,
+        視同保固
+    </li>
+    <li>
+        實際工作上由 Mark負全責,卷卷為搭配助手。
+
+        會另有PM正式和盟立公司級別對接。
+    </li>
+
+
+
+</ol>
+
+<hr />
+<h4>2021-03-03 by Kaiping</h4>
+<ol>
+    <li>在6/30前完成改寫WES為Web程式及程式操作測試。（依據操作手冊，自行完成測試後提交測試報告及程式碼，不用到泰國現場)</li>
+    <li>須提供程式碼</li>
+    <li>須能在PDA(Zebra CT20)使用</li>
+    <li>頁面需採用HTML5+CSS3+JavaScript+Bootstrap4+jQuery或類似的技術的開發框架</li>
+    <li>網頁UI請提供建議與評估</li>
+
+
+
+</ol>
+
+
+<hr />
+<h4>2021-03-03 by Kaiping</h4>
+<ol>
+    <li>在6/30前完成改寫WES為Web程式及程式操作測試。（依據操作手冊，自行完成測試後提交測試報告及程式碼，不用到泰國現場)</li>
+    <li>須提供程式碼</li>
+    <li>須能在PDA(Zebra CT20)使用</li>
+    <li>頁面需採用HTML5+CSS3+JavaScript+Bootstrap4+jQuery或類似的技術的開發框架</li>
+    <li>網頁UI請提供建議與評估</li>
+
+
+
+</ol>
+
+<h3> WES功能基本操作的说明：</h3>
+<h4>A.数据查询</h4>
+<ol>
+    <li>输入设定查询字段值，按Enter或Query交由后台处里回复页面</li>
+    <li>显示符合查询字段值的数据(表格)，如果有三层则出现三个页签</li>
+    <li>点选换另一笔主数据，出现该笔数据（列表)，下层页签同步更换显示主数据明细</li>
+</ol>
+
+<h4>B.挑选数据</h4>
+<ol>
+    <li>可单选或复选</li>
+    <li>按Execute交由后台完成数据处里后回复页面显示处里结果及更新页面(因状态改变查询筛选的数据有改变)</li>
+</ol>
+
+<h4>C.输入变更</h4>
+<ol>
+    <li>
+        点选一笔数据，在显示的列表中输入变更值(只有可以变更的字段才能输入或挑选下拉值)
+    </li>
+    <li>
+        按Execute交由后台完成数据处里后回复页面显示处里结果及更新页面(因状态改变查询筛选的数据有改变)
+    </li>
+</ol>
+
+<h4>D.登入</h4>
+<ol>
+    <li>
+        根据选取的语系，决定操作画面的字段名称显示值
+    </li>
+    <li>
+        根据使用者权限显示可操作的程式清单
+    </li>
+    <li>
+        根据使用者程式授权决定使用者可操作的功能（不可按的菜单、按钮呈现disable，不可输入的字段无法点选输入)
+    </li>
+</ol>
+
+
+<hr />
+
+
+
+@*<h3>不分組</h3>
+    <ol>
+        <li>S010 User Basic Data Maintain使用者基本数据维护</li>
+        <li>S020 Group Basic Data Maintain群组基本数据维护</li>
+        <li>S030 Program Basic Data Maintain程序基本数据维护</li>
+        <li>S040 Group User Data Maintain群组使用者数据维护</li>
+        <li>S050 Program Authorization by Group依群组设定程序使用权</li>
+        <li>S060 Program Authorization by User依使用者设定程序使用权</li>
+        <li>S070 Code Data Maintain代码维护(Not apply不适用)</li>
+        <li>S080 User Login Password Change使用者登入密码变更</li>
+        <li>S090 Translation Dictionary Maintain翻译字典维护</li>
+        <li>P020 Stock Allocation for Delivery Order(Auto)交货单分配库存出库(自动)</li>
+        <li>P030 Stock Allocation for Delivery Order(Manual)交货单分配库存出库(人工)</li>
+        <li>P060 Storage Transfer Out转储出库</li>
+        <li>P070 Pallet Inventory Adjustment托盘库存调整</li>
+        <li>P080 Inventory Transfer库存移转</li>
+        <li>P090 Palletizing of Empty Pallet空托盘码垛</li>
+        <li>P100 Empty Pallet Transfer Out空托盘出库</li>
+        <li>M070 AS/RS Transfer Command Maintain AS/RS搬运命令维护</li>
+        <li>M090 Location Usage Status Maintain库位使用状态维护</li>
+        <li>C010 Physical Inventory Count自动仓库存盘点</li>
+        <li>C030 Physical Inventory Count Record盘点数据记录</li>
+        <li>C040 PIC Difference Adjustment盘点差异调整</li>
+        <li>Q010 Article Basic Data Query库存产品基本数据查询</li>
+        <li>Q020 GTIN Basic Data Query产品替代包装单位基本数据查询</li>
+        <li>Q030 Storage Unit Type Basic Data Query储存载具基本数据查询</li>
+        <li>Q040 Transfer Requirement Data Query移转需求数据查询</li>
+        <li>Q050 Delivery Order Data Query交货单数据查询</li>
+        <li>Q060 Physical Inventory Count Data Query盘点单数据查询</li>
+        <li>Q070 AS/RS Transfer Command Data Query自动仓搬运命令查询</li>
+        <li>Q080 Inventory Data Query库存数据查询</li>
+        <li>Q090 Location Usage Status Query库位使用状态查询</li>
+        <li>Q100 Location Status Query库位状态查询</li>
+        <li>Q110 Bin to Bin Transfer Query转储记录数据查询</li>
+        <li>R030 Daily Inbound Summary Report上架日报</li>
+        <li>R040 Daily Outbound Summary Report下架日报</li>
+        <li>R050 Stock Inquiry Report库存查询报表</li>
+        <li>R060 Stock Movement Pallet库存异动托盘数</li>
+        <li>R070 Stock Movement Transaction库存异动交易数</li>
+        <li>R080 Stock Counting Difference盘点差异</li>
+    </ol>*@

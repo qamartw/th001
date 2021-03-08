@@ -1,0 +1,427 @@
+﻿@page "/menu/{id?}"
+
+@layout CleanLayout
+@inject NavigationManager NavigationManager
+@*@attribute [Authorize]*@
+@using Microsoft.AspNetCore.Hosting;
+@inject IWebHostEnvironment WebEnvironment;
+
+@using BlazorApp1.Data
+@inject PageService pageService;
+
+
+
+
+
+@*<h3> <a href="/"> <span class="oi oi-home" aria-hidden="true"></span></a> -  <span class="oi oi-list" aria-hidden="true"></span> Menu</h3>*@
+<h3> <a href="/"> <span class="oi oi-home" aria-hidden="true"></span></a> -   Menu</h3>
+
+
+<Tabs SelectedTab="@selectedTab" SelectedTabChanged="@OnSelectedTabChanged">
+    <Items>
+        <Tab Name="MENU">MENU</Tab>
+        <Tab Name="DOC">DOC</Tab>
+        <Tab Name="DocEn">Doc En</Tab>
+        <Tab Name="AREA1">AREA1</Tab>
+        <Tab Name="AREA2">AREA2</Tab>
+        <Tab Name="AREA3">AREA3</Tab>
+        <Tab Name="USER">USER</Tab>
+        @*<Tab Name="profile">M000</Tab>
+        <Tab Name="messages">P000</Tab>
+        <Tab Name="settings">Q000</Tab>
+        <Tab Name="R000">R000</Tab>
+        <Tab Name="S000">S000</Tab>*@
+        @*<Tab Name="ALL">ALL</Tab>
+        <Tab Name="SELECTED">SEL</Tab>*@
+    </Items>
+
+    <Content>
+        <TabPanel Name="MENU">
+
+            @*    <h3><span @onclick="()=>ToggleNavMenu()">Menu</span></h3>*@
+
+            <div class="menu123456"> <span @onclick="()=>ToggleSubMenuX(1)">(1) P000 Process Executing 流程执行 </span></div>
+            <GroupList IsExpand="@expandSubMenuX[1]" XList="@PageListP" programId="@Id" dir="@dir"></GroupList>
+
+            <div class="menu123456"> <span @onclick="()=>ToggleSubMenuX(2)">(2) M000 Data Maintenance 数据维护 </span></div>
+            <GroupList IsExpand="expandSubMenuX[2]" XList="@PageListM" programId="@Id" dir="@dir"></GroupList>
+
+            <div class="menu123456">
+                <span @onclick="()=>ToggleSubMenuX(3)"> (3) C000 Physical Inventory Count 库存盘点 </span>
+            </div>
+            <GroupList IsExpand="expandSubMenuX[3]" XList="@PageListC" programId="@Id" dir="@dir"></GroupList>
+
+            <div class="menu123456">
+                <span @onclick="()=>ToggleSubMenuX(4)"> (4) Q000 Data Inquire 数据查询 </span>
+            </div>
+            <GroupList IsExpand="expandSubMenuX[4]" XList="@PageListQ" programId="@Id" dir="@dir"></GroupList>
+
+            <div class="menu123456">
+                <span @onclick="()=>ToggleSubMenuX(5)">  (5) R000 Report 报表</span>
+            </div>
+            <GroupList IsExpand="expandSubMenuX[5]" XList="@PageListR" programId="@Id" dir="@dir"></GroupList>
+
+            <div class="menu123456">
+                <span @onclick="() => ToggleSubMenuX(6)"> (6) S000 System Setting 系统设定</span>
+            </div>
+            <GroupList IsExpand="expandSubMenuX[6]" XList="@PageListS" programId="@Id" dir="@dir"></GroupList>
+
+        </TabPanel>
+
+
+        <TabPanel Name="DOC">
+            @if (StrId == null)
+            {
+
+            }
+            else
+            {
+                <div>
+                    <span style="background-color:lightgray">
+                        <MenuDocTitle Title=@PageTitle></MenuDocTitle>
+                    </span>
+                </div>
+                @strHtml
+            }
+
+
+        </TabPanel>
+        <TabPanel Name="DocEn">
+            @if (StrId == null)
+            {
+
+            }
+            else
+            {
+                <div>
+                    <span style="background-color:lightgray">
+                        <MenuDocTitle Title=@PageTitle></MenuDocTitle>
+                    </span>
+                </div>
+                @strHtmlEn
+            }
+
+
+        </TabPanel>
+
+        <TabPanel Name="AREA1">
+            <h3>WORKING AREA 1</h3>
+            <MenuDocTitle Title=@PageTitle></MenuDocTitle>
+        </TabPanel>
+        <TabPanel Name="AREA2">
+            <h3>WORKING AREA 2</h3>
+            <MenuDocTitle Title=@PageTitle></MenuDocTitle>
+        </TabPanel>
+        <TabPanel Name="AREA3">
+            <h3>WORKING AREA 3</h3>
+            <MenuDocTitle Title=@PageTitle></MenuDocTitle>
+        </TabPanel>
+
+        <TabPanel Name="USER">
+            <h3>LOGIN/LOGOUT</h3>
+            ALSO SHOW USER'S GROUP/ROLE
+        </TabPanel>
+
+        <TabPanel Name="home">
+            @if (StrIdC == null)
+            {
+                @if (@PageListC != null)
+                {
+                    <ul>
+                        @foreach (var item in @PageListC)
+                        {
+                            <li><a href="/doc3/@item.Id">  @item.Name</a></li>
+                        }
+                    </ul>
+                }
+            }
+            else
+            {
+                <br />
+                <MenuDocTitle Title=@PageTitle></MenuDocTitle>
+                @strHtml
+            }
+
+        </TabPanel>
+        <TabPanel Name="profile">
+            @if (StrIdM == null)
+            {
+                @if (@PageListM != null)
+                {
+                    <ul>
+                        @foreach (var item in @PageListM)
+                        {
+                            <li><a href="/doc3/@item.Id">  @item.Name</a></li>
+                        }
+                    </ul>
+                }
+
+            }
+            else
+            {
+                <br />
+                <MenuDocTitle Title=@PageTitle></MenuDocTitle>
+                @strHtml
+            }
+        </TabPanel>
+        <TabPanel Name="messages">
+            @if (StrIdP == null)
+            {
+                @if (@PageListP != null)
+                {
+                    <ul>
+                        @foreach (var item in @PageListP)
+                        {
+                            <li><a href="/doc3/@item.Id">  @item.Name</a></li>
+                        }
+                    </ul>
+                }
+            }
+            else
+            {
+                <br />
+                <MenuDocTitle Title=@PageTitle></MenuDocTitle>
+                @strHtml
+            }
+        </TabPanel>
+        <TabPanel Name="settings">
+            @if (StrIdQ == null)
+            {
+                @if (@PageListQ != null)
+                {
+                    <ul>
+                        @foreach (var item in @PageListQ)
+                        {
+                            <li><a href="/doc3/@item.Id">  @item.Name</a></li>
+                        }
+                    </ul>
+                }
+            }
+            else
+            {
+                <br />
+                <MenuDocTitle Title=@PageTitle></MenuDocTitle>
+                @strHtml
+            }
+        </TabPanel>
+        <TabPanel Name="R000">
+            @if (StrIdR == null)
+            {
+                @if (@PageListR != null)
+                {
+                    <ul>
+                        @foreach (var item in @PageListR)
+                        {
+                            <li><a href="/doc3/@item.Id">  @item.Name</a></li>
+                        }
+                    </ul>
+                }
+            }
+            else
+            {
+                <br />
+                <MenuDocTitle Title=@PageTitle></MenuDocTitle>
+                @strHtml
+            }
+        </TabPanel>
+        <TabPanel Name="S000">
+            @if (StrIdS == null)
+            {
+                @if (@PageListS != null)
+                {
+                    <ul>
+                        @foreach (var item in @PageListS)
+                        {
+                            <li><a href="/doc3/@item.Id">  @item.Name</a></li>
+                        }
+                    </ul>
+                }
+            }
+            else
+            {
+                <br />
+                <MenuDocTitle Title=@PageTitle></MenuDocTitle>
+                @strHtml
+            }
+        </TabPanel>
+        <TabPanel Name="ALL">
+            @if (@PageList != null)
+            {
+                <ul>
+                    @foreach (var item in @PageList)
+                    {
+                        <li><a href="/doc3/@item.Id">  @item.Name</a></li>
+                    }
+                </ul>
+            }
+        </TabPanel>
+        <TabPanel Name="SELECTED">
+            <MenuDocTitle Title=@PageTitle></MenuDocTitle>
+            @strHtml
+        </TabPanel>
+
+    </Content>
+</Tabs>
+@code{
+    string selectedTab = "MENU";
+
+    private void OnSelectedTabChanged(string name)
+    {
+        selectedTab = name;
+        //if (name != "SELECTED")
+        //{
+        //    NavigationManager.NavigateTo("/doc3");
+        //  //  UpdateData();
+
+        //}
+
+        //if (name == "MENU")
+        //{
+        //    ToggleNavMenu();
+        //}
+
+    }
+
+    [Parameter]
+    public string Id { get; set; }
+
+    public string PageTitle { get; set; }
+
+    public string dir = "menu";
+
+    public List<IdName> PageList;
+    public List<IdName> PageListC;
+    public List<IdName> PageListM;
+    public List<IdName> PageListP;
+    public List<IdName> PageListQ;
+    public List<IdName> PageListR;
+    public List<IdName> PageListS;
+
+    public string NO_PARAMETER = "LIST";
+
+    public string StrId { get; set; }
+    public string StrEnId { get; set; }
+
+    public string StrIdC { get; set; }
+    public string StrEnIdC { get; set; }
+    public string StrIdM { get; set; }
+    public string StrIdP { get; set; }
+    public string StrIdQ { get; set; }
+    public string StrIdR { get; set; }
+    public string StrIdS { get; set; }
+
+    MarkupString strHtml;
+    MarkupString strHtmlEn;
+    protected override void OnInitialized()
+    {
+
+
+
+    }
+
+    protected override void OnAfterRender(bool firstRender)
+    {
+        UpdateData();
+
+    }
+    private void UpdateData()
+    {
+        var x = Id;
+
+        if (Id != null)
+        {
+            StrId = Id;
+
+
+
+
+            //    selectedTab = "SELECTED";
+            StrIdC = null;
+            StrIdM = null;
+            StrIdP = null;
+            StrIdQ = null;
+            StrIdR = null;
+            StrIdS = null;
+
+
+
+            if (Id.StartsWith("C")) StrIdC = Id;
+            if (Id.StartsWith("M")) StrIdM = Id;
+            if (Id.StartsWith("P")) StrIdP = Id;
+            if (Id.StartsWith("Q")) StrIdQ = Id;
+            if (Id.StartsWith("R")) StrIdR = Id;
+            if (Id.StartsWith("S")) StrIdS = Id;
+
+
+
+        }
+        else
+        {
+            StrId = null;
+            StrIdC = Id;
+            StrIdM = Id;
+            StrIdP = Id;
+            StrIdQ = Id;
+            StrIdR = Id;
+            StrIdS = Id;
+
+
+
+        }
+        StateHasChanged();
+        var wwwroot = WebEnvironment.WebRootPath;
+
+        //            strHtml = (MarkupString)Util.GetHtmlStringExtAll(wwwroot, "Q080");
+        strHtml = (MarkupString)Util.GetHtmlStringExtAll(wwwroot, StrId);
+        strHtmlEn = (MarkupString)Util.GetHtmlStringExtAllLang(wwwroot, StrId,"en");
+
+        //        PageTitle = Util.GetPageTitle(wwwroot, StrId);
+        PageTitle = pageService.GetPageTitle(StrId);
+
+        PageList = pageService.GetPageList();
+        PageListC = pageService.GetPageList("C");
+        PageListM = pageService.GetPageList("M");
+        PageListP = pageService.GetPageList("P");
+        PageListQ = pageService.GetPageList("Q");
+        PageListR = pageService.GetPageList("R");
+        PageListS = pageService.GetPageList("S");
+        //   StateHasChanged();
+
+
+
+    }
+
+    // NOTE by Mark, 2021-01-08
+    private bool expandSubMenu = false;
+    private void ToggleSubMenu()
+    {
+        expandSubMenu = !expandSubMenu;
+    }
+
+    private bool collapseNavMenu = true;
+    private string NavMenuCssClass => collapseNavMenu ? "collapse" : null;
+
+    private bool[] expandSubMenuX = new bool[7];
+
+    private void ToggleSubMenuX(int seq)
+    {
+
+        expandSubMenuX[seq] = !expandSubMenuX[seq];
+    }
+    private void ToggleNavMenu()
+    {
+        //collapseNavMenu = !collapseNavMenu;
+        //foreach (bool x in expandSubMenuX.Select)
+        //{
+        //    x = false;
+        //}
+        collapseNavMenu = !collapseNavMenu;
+
+        for (int i = 0; i < expandSubMenuX.Count(); i++)
+        {
+            // Do something...
+            expandSubMenuX[i] = collapseNavMenu;
+        }
+    }
+
+}

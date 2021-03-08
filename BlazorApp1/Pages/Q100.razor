@@ -1,0 +1,34 @@
+﻿@page "/Q100"
+@*@attribute [Authorize]*@
+
+<h3>    <a href="Q000"> <span class="oi oi-list" aria-hidden="true"></span></a> - Q100 Location Status Query 库位状态查询</h3>
+
+<br />
+@strTable
+<br />
+<img src="img/Q100.png" />
+@*<img src="img/Q110-2.png" />*@
+
+
+
+@code {
+    MarkupString strTable;
+
+
+
+  //  Ten ten;
+    protected override void OnInitialized()
+    {
+
+
+        //string jsonString = System.IO.File.ReadAllText(@"D:\Project2021\Project2021\BlazorApp1\wwwroot\json\Q110.json");
+
+
+        //ten = Newtonsoft.Json.JsonConvert.DeserializeObject<Ten>(jsonString);
+        strTable = (MarkupString)Util.GetHtmlStringExt("Q100");
+
+
+    }
+
+}
+

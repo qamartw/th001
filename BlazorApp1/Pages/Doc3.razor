@@ -1,0 +1,287 @@
+﻿
+@layout CleanLayout
+@inject NavigationManager NavigationManager
+@page "/doc3/{id?}"
+@*@attribute [Authorize]*@
+@using Microsoft.AspNetCore.Hosting;
+@inject IWebHostEnvironment WebEnvironment;
+
+@using BlazorApp1.Data
+@inject PageService pageService;
+
+
+
+
+
+<h3> <a href="/"> <span class="oi oi-home" aria-hidden="true"></span></a> -  <span class="oi oi-list" aria-hidden="true"></span> Doc List 文檔列表 (Tabs demo)</h3>
+
+
+<Tabs SelectedTab="@selectedTab" SelectedTabChanged="@OnSelectedTabChanged">
+    <Items>
+        <Tab Name="home">C000</Tab>
+        <Tab Name="profile">M000</Tab>
+        <Tab Name="messages">P000</Tab>
+        <Tab Name="settings">Q000</Tab>
+        <Tab Name="R000">R000</Tab>
+        <Tab Name="S000">S000</Tab>
+        @*<Tab Name="ALL">ALL</Tab>
+            <Tab Name="SELECTED">SEL</Tab>*@
+    </Items>
+    <Content>
+        <TabPanel Name="home">
+            @if (StrIdC == null)
+            {
+                @if (@PageListC != null)
+                {
+                    <ul>
+                        @foreach (var item in @PageListC)
+                        {
+                            <li><a href="/doc3/@item.Id">  @item.Name</a></li>
+                        }
+                    </ul>
+                }
+            }
+            else
+            {
+                <br />
+                <HomeHeadDoc3 Title=@PageTitle></HomeHeadDoc3>
+                @strHtml
+            }
+
+        </TabPanel>
+        <TabPanel Name="profile">
+            @if (StrIdM == null)
+            {
+                @if (@PageListM != null)
+                {
+                    <ul>
+                        @foreach (var item in @PageListM)
+                        {
+                            <li><a href="/doc3/@item.Id">  @item.Name</a></li>
+                        }
+                    </ul>
+                }
+
+            }
+            else
+            {
+                <br />
+                <HomeHeadDoc3 Title=@PageTitle></HomeHeadDoc3>
+                @strHtml
+            }
+        </TabPanel>
+        <TabPanel Name="messages">
+            @if (StrIdP == null)
+            {
+                @if (@PageListP != null)
+                {
+                    <ul>
+                        @foreach (var item in @PageListP)
+                        {
+                            <li><a href="/doc3/@item.Id">  @item.Name</a></li>
+                        }
+                    </ul>
+                }
+            }
+            else
+            {
+                <br />
+                <HomeHeadDoc3 Title=@PageTitle></HomeHeadDoc3>
+                @strHtml
+            }
+        </TabPanel>
+        <TabPanel Name="settings">
+            @if (StrIdQ == null)
+            {
+                @if (@PageListQ != null)
+                {
+                    <ul>
+                        @foreach (var item in @PageListQ)
+                        {
+                            <li><a href="/doc3/@item.Id">  @item.Name</a></li>
+                        }
+                    </ul>
+                }
+            }
+            else
+            {
+                <br />
+                <HomeHeadDoc3 Title=@PageTitle></HomeHeadDoc3>
+                @strHtml
+            }
+        </TabPanel>
+        <TabPanel Name="R000">
+            @if (StrIdR == null)
+            {
+                @if (@PageListR != null)
+                {
+                    <ul>
+                        @foreach (var item in @PageListR)
+                        {
+                            <li><a href="/doc3/@item.Id">  @item.Name</a></li>
+                        }
+                    </ul>
+                }
+            }
+            else
+            {
+                <br />
+                <HomeHeadDoc3 Title=@PageTitle></HomeHeadDoc3>
+                @strHtml
+            }
+        </TabPanel>
+        <TabPanel Name="S000">
+            @if (StrIdS == null)
+            {
+                @if (@PageListS != null)
+                {
+                    <ul>
+                        @foreach (var item in @PageListS)
+                        {
+                            <li><a href="/doc3/@item.Id">  @item.Name</a></li>
+                        }
+                    </ul>
+                }
+            }
+            else
+            {
+                <br />
+                <HomeHeadDoc3 Title=@PageTitle></HomeHeadDoc3>
+                @strHtml
+            }
+        </TabPanel>
+        <TabPanel Name="ALL">
+            @if (@PageList != null)
+            {
+                <ul>
+                    @foreach (var item in @PageList)
+                    {
+                        <li><a href="/doc3/@item.Id">  @item.Name</a></li>
+                    }
+                </ul>
+            }
+        </TabPanel>
+        <TabPanel Name="SELECTED">
+            <HomeHeadDoc3 Title=@PageTitle></HomeHeadDoc3>
+            @strHtml
+        </TabPanel>
+
+    </Content>
+</Tabs>
+@code{
+    string selectedTab = "profile";
+
+    private void OnSelectedTabChanged(string name)
+    {
+        selectedTab = name;
+        //if (name != "SELECTED")
+        //{
+        //    NavigationManager.NavigateTo("/doc3");
+        //  //  UpdateData();
+
+        //}
+
+    }
+
+    [Parameter]
+    public string Id { get; set; }
+
+    public string PageTitle { get; set; }
+
+
+    public List<IdName> PageList;
+    public List<IdName> PageListC;
+    public List<IdName> PageListM;
+    public List<IdName> PageListP;
+    public List<IdName> PageListQ;
+    public List<IdName> PageListR;
+    public List<IdName> PageListS;
+
+    public string NO_PARAMETER = "LIST";
+
+    public string StrId { get; set; }
+    public string StrIdC { get; set; }
+    public string StrIdM { get; set; }
+    public string StrIdP { get; set; }
+    public string StrIdQ { get; set; }
+    public string StrIdR { get; set; }
+    public string StrIdS { get; set; }
+
+    MarkupString strHtml;
+    protected override void OnInitialized()
+    {
+
+
+
+    }
+
+    protected override void OnAfterRender(bool firstRender)
+    {
+        UpdateData();
+
+    }
+    private void UpdateData()
+    {
+        var x = Id;
+
+        if (Id != null)
+        {
+            StrId = Id;
+            //    selectedTab = "SELECTED";
+            StrIdC = null;
+            StrIdM = null;
+            StrIdP = null;
+            StrIdQ = null;
+            StrIdR = null;
+            StrIdS = null;
+
+
+
+            if (Id.StartsWith("C")) StrIdC = Id;
+            if (Id.StartsWith("M")) StrIdM = Id;
+            if (Id.StartsWith("P")) StrIdP = Id;
+            if (Id.StartsWith("Q")) StrIdQ = Id;
+            if (Id.StartsWith("R")) StrIdR = Id;
+            if (Id.StartsWith("S")) StrIdS = Id;
+
+
+
+        }
+        else
+        {
+            StrId = null;
+            StrIdC = Id;
+            StrIdM = Id;
+            StrIdP = Id;
+            StrIdQ = Id;
+            StrIdR = Id;
+            StrIdS = Id;
+
+
+
+        }
+        StateHasChanged();
+        var wwwroot = WebEnvironment.WebRootPath;
+
+        //            strHtml = (MarkupString)Util.GetHtmlStringExtAll(wwwroot, "Q080");
+        strHtml = (MarkupString)Util.GetHtmlStringExtAll(wwwroot, StrId);
+
+        //        PageTitle = Util.GetPageTitle(wwwroot, StrId);
+        PageTitle = pageService.GetPageTitle(StrId);
+
+        PageList = pageService.GetPageList();
+        PageListC = pageService.GetPageList("C");
+        PageListM = pageService.GetPageList("M");
+        PageListP = pageService.GetPageList("P");
+        PageListQ = pageService.GetPageList("Q");
+        PageListR = pageService.GetPageList("R");
+        PageListS = pageService.GetPageList("S");
+        //   StateHasChanged();
+
+
+
+    }
+
+
+
+}

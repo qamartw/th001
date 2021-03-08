@@ -1,0 +1,188 @@
+﻿@page "/P020"
+@attribute [Authorize]
+
+<h3>    <a href="P000"> <span class="oi oi-project" aria-hidden="true"></span></a> - P020 Stock Allocation for Delivery Order(Auto) 交货单分配库存出库(自动)</h3>
+
+
+
+
+<br />
+
+
+
+<div>
+    <table class="gridtable" width="75%">
+        <tr><th></th><th width="13%">Topic 主題</th><th>Description 說明</th></tr>
+        <tr>
+            <th>1</th>
+            <td>
+                作业目的<br />
+                Operation purpose
+            </td>
+            <td>
+                发货条件不是20或90的交货单自动分配库存出库<br />
+                Automatically allocates inventory storage for delivery order that shipping condition is not 20 or 90
+            </td>
+        </tr>
+        <tr>
+            <th>2</th>
+            <td>
+                说明<br />
+                Description
+            </td>
+            <td>
+                查看是否还有未自动执行的交货单<br />
+                Check if there are any delivery orders that are not automatically executed
+            </td>
+        </tr>
+        <tr>
+            <th>3</th>
+            <td>
+                角色<br />
+                Roles
+            </td>
+            <td>
+                仓管员<br />
+                Warehouse operator
+            </td>
+        </tr>
+
+
+        <tr>
+            <th>4</th>
+            <td>
+                前置条件<br />
+                Precondition
+
+            </td>
+            <td>
+                SAP下传相关Delivery Data<br />
+                SAP download related delivery data
+            </td>
+        </tr>
+
+        <tr>
+            <th>5</th>
+            <td>
+                输入<br />
+                Input
+
+            </td>
+            <td>
+                可执行Delivery数据<br />
+                Executable Delivery Data
+
+            </td>
+        </tr>
+
+        <tr>
+            <th>6</th>
+            <td>
+                输出<br />
+                Output
+
+            </td>
+            <td>
+                拣配数据、更新Delivery数据状态<br />
+                Picking data, updating Delivery data status
+            </td>
+        </tr>
+
+        <tr>
+            <th>7</th>
+            <td>
+                异常处里<br />
+                Abnormal handle
+            </td>
+            <td>
+                <ul style="margin-left:-24px">
+                    <li>
+                        如果无符合条件的Delivery数据，系统将提示查无可用Delivery信息，用户可执行Data Inquire-->Q050 Delivery Order Data Query作业查询Delivery数据与状态；或挑选指定的Delivery No.
+                        <br />
+                        If there is no eligible Delivery data, the system will prompt to check that no Delivery information is available. The user can run the Data Inquire-> Q050 Delivery Order Data Query job to query the Delivery data and status; or select the specified Delivery No.
+                    </li>
+                    <li>
+                        如果因为网路中断产生的异常，须结束WES软件，请网路管理人员恢复网路后再重启WES
+                        <br />
+                        If the WES software needs to be terminated due to an abnormality caused by a network interruption, ask the network administrator to restore the network and restart WES
+                    </li>
+                </ul>
+
+
+            </td>
+        </tr>
+
+        <tr>
+            <th>8</th>
+            <td>
+
+
+                操作步骤<br />
+                Steps
+
+            </td>
+            <td>
+                <ol style="margin-left:-24px">
+                    <li>
+                        输入查询条件或挑选Delivery No后点选Query查询可拣配Delivery表头与明细清单<br />
+                        Enter the query conditions or select Delivery No and click Query to pick the Delivery header and detailed list.
+                    </li>
+                    <li>
+                        挑选要拣配的Delivery数据，点选Execute产生拣配数据并更新Delivery数据状态<br />
+                        Select the Delivery data, click Execute to generate picking data and update Delivery data status
+                    </li>
+                    <li>
+                        点选功能菜单Refresh可清除画面上的数据回到初始状态<br />
+                        Click the function menu Refresh to clear the data on the screen and return to the initial state.
+                    </li>
+                    <li>
+                        点选功能菜单Exit或关闭视窗可结束此作业<br />
+                        Click the function menu Exit or close the window to end this operation
+                    </li>
+
+                </ol>
+
+
+
+
+            </td>
+        </tr>
+
+
+        <tr>
+            <th>9</th>
+            <td>
+                后置条件<br />
+                Post condition
+
+            </td>
+            <td>
+                自动仓库搬运出库<br />
+                AS/RS move out the pallet
+            </td>
+        </tr>
+
+
+        <tr>
+            <th>10</th>
+            <td>
+                备注<br />
+                Remark
+
+
+            </td>
+            <td>
+                此作业依据FEFO & FIFO等逻辑自动分配库存。此程序为备用，可检查是否有未能自动执行或未执行完成的交货单。<br />
+                This operation automatically allocates inventory based on logic such as FEFO & FIFO. This program is a backup, you can check whether there is a delivery order that is not automatically executed or not executed completely.
+
+            </td>
+        </tr>
+
+    </table>
+</div>
+
+<br />
+<img src="img/P020.png" />
+
+
+

@@ -1,0 +1,9 @@
+1. unzip Th001.zip
+2. VS2019 open Th001\BlazorApp1\BlazorApp1.csproj
+3. Debug to run BlazorApp1
+4. Edit Util.cs file to meet requirement
+5. zip final project and send back
+
+
+我們以 15 分鐘為每個 task 的基本工作單位時間,
+這個工作算是一個單位

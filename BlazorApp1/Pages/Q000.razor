@@ -1,0 +1,104 @@
+﻿
+@layout CleanLayout
+@page "/Q000/{id?}"
+@attribute [Authorize]
+@using Microsoft.AspNetCore.Hosting;
+@inject IWebHostEnvironment WebEnvironment;
+
+@using BlazorApp1.Data
+@inject PageService pageService;
+
+@if (@StrId == null)
+{
+
+
+    <h3> <a href="/"> <span class="oi oi-home" aria-hidden="true"></span></a> -   <span class="oi oi-list" aria-hidden="true"></span> Q000 Data Inquire 数据查询</h3>
+    <ul>
+        @if (@PageList != null)
+        {
+            @foreach (var item in @PageList)
+            {
+                <li><a href="/Q000/@item.Id">  @item.Name</a></li>
+            }
+
+        }
+
+        @*<li><a href="/Q000/Q080">Q080 Inventory Data Query 库存数据查询</a></li>
+        <li><a href="/Q000/Q090">Q090 Location Usage Status Query 库位使用状态查询</a></li>
+        <li><a href="/Q000/Q100">Q100 Location Status Query 库位状态查询</a></li>
+        <li><a href="/Q000/Q110">Q110 Bin to Bin Transfer Query 转储记录数据查询</a></li>
+        <li><a href="/Q000/Q120">Q120 Posting Change Transfer Query库存属性移转查询</a></li>
+
+
+        <li>Q010 Article Basic Data Query 库存产品基本数据查询</li>
+        <li>Q020 GTIN Basic Data Query 产品替代包装单位基本数据查询</li>
+        <li>Q030 Storage Unit Type Basic Data Query 储存载具基本数据查询</li>
+        <li>Q040 Transfer Requirement Data Query 移转需求数据查询</li>
+        <li>Q050 Delivery Order Data Query 交货单数据查询</li>
+        <li>Q060 Physical Inventory Count Data Query 盘点单数据查询</li>
+        <li>Q070 AS/RS Transfer Command Data Query 自动仓搬运命令查询</li>
+        <li><a href="Q080">Q080 Inventory Data Query 库存数据查询</a></li>
+        <li><a href="Q090">Q090 Location Usage Status Query 库位使用状态查询</a></li>
+        <li><a href="Q100">Q100 Location Status Query 库位状态查询</a></li>
+        <li><a href="Q110">Q110 Bin to Bin Transfer Query 转储记录数据查询</a></li>
+        <li><a href="Q120">Q120 Posting Change Transfer Query库存属性移转查询</a></li>*@
+    </ul>
+}
+else
+{
+
+    <Q000Head Title=@PageTitle></Q000Head>
+    @strHtml
+}
+
+
+
+@code {
+    [Parameter]
+    public string Id { get; set; }
+
+    public string PageTitle { get; set; }
+
+
+    public List<IdName> PageList;
+
+    public string NO_PARAMETER = "LIST";
+    public string StrId { get; set; }
+
+    MarkupString strHtml;
+    protected override void OnInitialized()
+    {
+
+
+
+    }
+    protected override void OnAfterRender(bool firstRender)
+    {
+        var x = Id;
+
+        if (Id != null)
+        {
+            StrId = Id;
+        }
+        else
+        {
+            StrId = null;
+        }
+        StateHasChanged();
+        var wwwroot = WebEnvironment.WebRootPath;
+
+        //            strHtml = (MarkupString)Util.GetHtmlStringExtAll(wwwroot, "Q080");
+        strHtml = (MarkupString)Util.GetHtmlStringExtAll(wwwroot, StrId);
+
+        //        PageTitle = Util.GetPageTitle(wwwroot, StrId);
+        PageTitle = pageService.GetPageTitle(StrId);
+        PageList = pageService.GetPageList("Q");
+
+
+
+
+    }
+
+
+
+}

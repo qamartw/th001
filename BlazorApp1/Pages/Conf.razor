@@ -1,0 +1,114 @@
+﻿@page "/conf"
+<h3>項目討論</h3>
+<hr />
+<h4>TBD</h4>
+
+<ul>
+    <li>
+        建議設定 milestone
+
+    
+        <Table class="gridtable">
+            <tr><th></th><th>主題</th><th>程式系列|補充說明</th><th>筆數</th><th>完成日期</th></tr>
+            <tr><th>1</th><td>基本框架, 使用者介面, 和所有查詢報表</td><td>Q000数据查询(12) R000报表(6) </td><td align="right">18&nbsp;&nbsp; </td><td align="center">2021-03-31</td></tr>
+            <tr><th>2</th><td>涉及數據增刪改,上下(ERP/MES|WCS)啣接</td><td>P000流程执行(7)  M000数据维护(2) C000库存盘点(3) </td><td align="right">12&nbsp;&nbsp; </td><td align="center">2021-04-30</td></tr>
+            <tr><th>3</th><td>用戶權限,多語,小型顯示設備(安卓手持)</td><td>S000系统设定(9) </td><td align="right">9&nbsp;&nbsp; </td><td align="center">2021-05-31</td></tr>
+            <tr><th>4</th><td>保固</td><td>N/A </td><td> </td><td align="center">TBD</td></tr>
+
+
+        </Table>
+
+    </li>
+    <li>
+        真正施工時, 上述 123實際是會重疊實現
+    </li>
+    <li>
+        實際進度,建議單週或雙週,
+        由PM,儘可能會同盟立接收單位或指派人員 review,
+        可以即時適當調整
+    </li>
+
+</ul>
+<hr />
+
+
+
+
+
+<h4>2021-03-03</h4>
+<ul>
+    <li>
+        何時確認項目是否立案進行
+        <ul><li>【Kaiping】盟立預算不高, 如果價格談得攏就會立刻立案</li></ul>
+    </li>
+    <li>
+        是否有保密協議及其範圍
+        <ul><li>【Kaiping】立案後盟立會提供目前程式可運行的版本含DB與source code, 如果需要額外NDA就會簽</li></ul>
+    </li>
+    <li>
+        是否有現成測試用例含現成可用數據
+        <ul><li>【Kaiping】同上, 盟立可以提供現在運行的版本來參考</li></ul>
+    </li>
+
+    <li>
+        向上(ERP|MES)及向下(AS/RS)的溝通協議    <ul><li>【Kaiping】 ERP和WCS的接口比照目前的版本, 如果需要修改可以另外談</li></ul>
+    </li>
+    <li>
+        是否有其它現有技術文檔
+        <ul><li>【Kaiping】盟立可安排原本的SA/SD人員當面說明, 如果有文檔會可提供</li></ul>
+    </li>
+
+    <li>
+        多語要求及標準
+        <ul><li>【Kaiping】提供簡中+英語, 並開放客戶自行維護泰語resource檔</li></ul>
+    </li>
+
+
+    <li>
+        驗收標準
+        <ul><li>【Kaiping】完成測試後提交安裝手冊, 使用手冊 , 測試報告及程式碼給盟立驗收, 並提供1年期的保固</li></ul>
+    </li>
+
+</ul>
+
+@*<h3>不分組</h3>
+    <ol>
+        <li>S010 User Basic Data Maintain使用者基本数据维护</li>
+        <li>S020 Group Basic Data Maintain群组基本数据维护</li>
+        <li>S030 Program Basic Data Maintain程序基本数据维护</li>
+        <li>S040 Group User Data Maintain群组使用者数据维护</li>
+        <li>S050 Program Authorization by Group依群组设定程序使用权</li>
+        <li>S060 Program Authorization by User依使用者设定程序使用权</li>
+        <li>S070 Code Data Maintain代码维护(Not apply不适用)</li>
+        <li>S080 User Login Password Change使用者登入密码变更</li>
+        <li>S090 Translation Dictionary Maintain翻译字典维护</li>
+        <li>P020 Stock Allocation for Delivery Order(Auto)交货单分配库存出库(自动)</li>
+        <li>P030 Stock Allocation for Delivery Order(Manual)交货单分配库存出库(人工)</li>
+        <li>P060 Storage Transfer Out转储出库</li>
+        <li>P070 Pallet Inventory Adjustment托盘库存调整</li>
+        <li>P080 Inventory Transfer库存移转</li>
+        <li>P090 Palletizing of Empty Pallet空托盘码垛</li>
+        <li>P100 Empty Pallet Transfer Out空托盘出库</li>
+        <li>M070 AS/RS Transfer Command Maintain AS/RS搬运命令维护</li>
+        <li>M090 Location Usage Status Maintain库位使用状态维护</li>
+        <li>C010 Physical Inventory Count自动仓库存盘点</li>
+        <li>C030 Physical Inventory Count Record盘点数据记录</li>
+        <li>C040 PIC Difference Adjustment盘点差异调整</li>
+        <li>Q010 Article Basic Data Query库存产品基本数据查询</li>
+        <li>Q020 GTIN Basic Data Query产品替代包装单位基本数据查询</li>
+        <li>Q030 Storage Unit Type Basic Data Query储存载具基本数据查询</li>
+        <li>Q040 Transfer Requirement Data Query移转需求数据查询</li>
+        <li>Q050 Delivery Order Data Query交货单数据查询</li>
+        <li>Q060 Physical Inventory Count Data Query盘点单数据查询</li>
+        <li>Q070 AS/RS Transfer Command Data Query自动仓搬运命令查询</li>
+        <li>Q080 Inventory Data Query库存数据查询</li>
+        <li>Q090 Location Usage Status Query库位使用状态查询</li>
+        <li>Q100 Location Status Query库位状态查询</li>
+        <li>Q110 Bin to Bin Transfer Query转储记录数据查询</li>
+        <li>R030 Daily Inbound Summary Report上架日报</li>
+        <li>R040 Daily Outbound Summary Report下架日报</li>
+        <li>R050 Stock Inquiry Report库存查询报表</li>
+        <li>R060 Stock Movement Pallet库存异动托盘数</li>
+        <li>R070 Stock Movement Transaction库存异动交易数</li>
+        <li>R080 Stock Counting Difference盘点差异</li>
+    </ol>*@

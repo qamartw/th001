@@ -1,0 +1,35 @@
+﻿@page "/Q110"
+@*@attribute [Authorize]*@
+
+<h3>    <a href="Q000"> <span class="oi oi-list" aria-hidden="true"></span></a> - Q110 Bin to Bin Transfer Query 转储记录数据查询</h3>
+
+<br />
+@strTable
+<br />
+<img src="img/Q110.png" />
+<img src="img/Q110-2.png" />
+
+
+
+@code {
+    private int currentCount = 0;
+    MarkupString strTable;
+
+
+
+    Ten ten;
+    protected override void OnInitialized()
+    {
+
+
+        string jsonString = System.IO.File.ReadAllText(@"D:\Project2021\Project2021\BlazorApp1\wwwroot\json\Q110.json");
+
+
+        ten = Newtonsoft.Json.JsonConvert.DeserializeObject<Ten>(jsonString);
+        strTable = (MarkupString)Util.GetHtmlString(ten);
+
+
+    }
+
+}
+

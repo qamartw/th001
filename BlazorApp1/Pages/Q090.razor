@@ -1,0 +1,16 @@
+﻿@page "/Q090"
+@attribute [Authorize]
+@inject IWebHostEnvironment WebEnvironment;
+
+<Q000Head Title="Q090 Location Usage Status Query 库位使用状态查询"></Q000Head>
+@strHtml
+
+@code {
+    MarkupString strHtml;
+    protected override void OnInitialized()
+    {
+        var wwwroot = WebEnvironment.WebRootPath;
+        strHtml = (MarkupString)Util.GetHtmlStringExtAll(wwwroot, "Q090");
+    }
+}
+

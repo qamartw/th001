@@ -1,0 +1,18 @@
+﻿@page "/Q080"
+@attribute [Authorize]
+@using Microsoft.AspNetCore.Hosting;
+@inject IWebHostEnvironment WebEnvironment;
+<Q000Head Title="Q080 Inventory Data Query库存数据查询"></Q000Head>
+@strHtml
+
+@code {
+    MarkupString strHtml;
+
+    protected override void OnInitialized()
+    {
+        var wwwroot = WebEnvironment.WebRootPath;
+    
+        strHtml = (MarkupString)Util.GetHtmlStringExtAll(wwwroot, "Q080");
+    }
+}
+

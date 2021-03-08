@@ -1,0 +1,41 @@
+﻿@*@typeparam TItem*@
+
+@using BlazorApp1
+
+@if (IsExpand)
+{
+    @if (@XList != null)
+    {
+        <ul>
+            @foreach (var item in @XList)
+            {
+                if (item.Id == programId)
+                {
+                    <li class="menu123456-selected" style="background-color:lightgray"><a href="/@dir/@item.Id">  @item.Name</a></li>
+
+                }
+                else
+                {
+                    <li><a href="/@dir/@item.Id">  @item.Name</a></li>
+
+                }
+            }
+        </ul>
+    }
+}
+
+@code {
+    // Demonstrates how a parent component can supply parameters
+    [Parameter]
+    public bool IsExpand { get; set; }
+
+    [Parameter]
+    public string dir { get; set; }
+
+    [Parameter]
+    public string programId { get; set; }
+
+    [Parameter]
+    public List<IdName> XList { get; set; }
+
+}
